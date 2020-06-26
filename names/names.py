@@ -10,11 +10,10 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-duplicates = []  # Return the list of duplicates in this data structure
+# Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
-overlap = set(names_1) & set(names_2)
-print(overlap)
+duplicates = set(names_1) & set(names_2)
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
