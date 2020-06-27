@@ -9,22 +9,23 @@ class RingBuffer:
         self.length = 0
 
     def append(self, item):
-        if (self.length == self.capacity):
-            if self.current.next is not None:
-                self.current.value = item
-                self.current = self.current.next
+        if (self.length == self.capacity):  # check to see if length and capacity match
+            if self.current.next is not None:  # if there is a next node
+                self.current.value = item  # set the value to that node
+                self.current = self.current.next  # move the pointer
+            # if the next is none  (circle this to head)
             elif self.current.next is None:
-                self.buffer.value = item
-                self.current = self.buffer.head
+                self.buffer.value = item  # set the value to the item
+                self.current = self.buffer.head  # MUST CONNECT TAIL TO HEAD.
         else:
             self.buffer.add_to_tail(item)
             self.current = self.buffer.head
             self.length += 1
 
     def get(self):
-        list_buffer_contents = []
-        current = self.buffer.head
-        while (current is not None):
-            list_buffer_contents.append(current.value)
-            current = current.next
-        return list_buffer_contents
+        box = []  # make the box
+        current = self.buffer.head  # set the head to a variable
+        while (current is not None):  # while current
+            box.append(current.value)  # move the current into the box
+            current = current.next  # move the head and start over
+        return box  # return the box
