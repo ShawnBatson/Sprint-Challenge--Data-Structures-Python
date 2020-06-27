@@ -1,3 +1,5 @@
+
+from binary_search_tree import BSTNode
 import time
 
 start_time = time.time()
@@ -11,14 +13,33 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 # Return the list of duplicates in this data structure
-
+duplicates = []
 # Replace the nested for loops below with your improvements
-duplicates = set(names_1) & set(names_2)  # MVP MVP MVP # possibly stretch?
+
+# MVP#############   1 second average
+
+# for i in names_1:
+#     if i in names_2:
+#         duplicates.append(i)
+
+#######Stretch########
+
+bst = BSTNode(names_1[0])
+
+for i in range(1, len(names_1)-1):
+    bst.insert(names_1[i])
+
+for name in names_2:
+    if bst.contains(name):
+        duplicates.append(name)
+
+# .01 second
 
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print(f"runtime: {end_time - start_time} seconds")
+
 
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
