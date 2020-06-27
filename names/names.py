@@ -22,6 +22,10 @@ duplicates = []
 #     if i in names_2:
 #         duplicates.append(i)
 
+###MVP 2 ##########################
+
+# [duplicates.append(x) for x in names_1 if x in names_2]
+
 #######Stretch########
 
 bst = BSTNode(names_1[0])
